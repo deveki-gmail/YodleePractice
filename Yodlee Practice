@@ -1,0 +1,113 @@
+Base URL:
+https://developer.api.yodlee.com/ysl/
+
+Cobrand Login :
+-----------------------------------------------------------------------------------------------------------------------
+https://developer.api.yodlee.com/ysl/cobrand/login
+Request :(Curl Command)
+curl -X POST \
+  https://developer.api.yodlee.com/ysl/cobrand/login \
+  -H 'api-version: 1.1' \
+  -H 'cache-control: no-cache' \
+  -H 'cobrand-name: restserver' \
+  -H 'content-type: application/json' \
+  -d '{
+    "cobrand":{
+        "cobrandLogin":"sbCobdfe35ba186ce2372f9529d3461e3c8e9ba",
+        "cobrandPassword":"cd321fd2-931b-4fd0-9148-3a5006cbf60a"
+    }
+}'
+------------
+Response : |
+------------
+{
+    "cobrandId": 10010352,
+    "applicationId": "3A4CAE9B71A1CCD7FF41F51006E9ED00",
+    "locale": "en_US",
+    "session": {
+        "cobSession": "08062013_1:1248d0142f398a68b7125bc2199f6ec242d310b75f6bfde65efba7901340fa272b1b3f7f68a3297a0c2c4b5a56c2809fad4f03bcd7f7f53d4d545389eb9cb4b7"
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------
+Authenticate User Login:
+https://developer.api.yodlee.com/ysl/user/login
+Request :(Curl Command)
+curl -X POST \
+  https://developer.api.yodlee.com/ysl/user/login \
+  -H 'api-version: 1.1' \
+  -H 'authorization: cobSession=08062013_1:baab48aa5f29f8e3c14efe402c24be333d059086a97ca8b6aaafd9e5ca1fb0b56575d1ec5bba291540e911fe9571ebfa6637d70398d93601d55f2af5c8385462' \
+  -H 'cache-control: no-cache' \
+  -H 'cobrand-name: restserver' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 484088b8-91ce-0d5d-e325-3510442ef643' \
+  -d '{
+    "user":{
+        "loginName":"sbMemdfe35ba186ce2372f9529d3461e3c8e9ba1",
+        "password":"sbMemdfe35ba186ce2372f9529d3461e3c8e9ba1#123"
+    }
+}'
+------------
+Response : |
+------------
+{
+    "user": {
+        "id": 10194351,
+        "loginName": "sbMemdfe35ba186ce2372f9529d3461e3c8e9ba1",
+        "name": {
+            "first": "deveki",
+            "last": "nandan mishra"
+        },
+        "roleType": "INDIVIDUAL",
+        "session": {
+            "userSession": "08062013_0:7ebc39f715ea4362ef7a1cb46dc99c90f212deac5940a302a0a50d883ee1088837aa61b2ce27bc707124df6231335ae62528f76db5c968c9540d75ff89e9bf41"
+        },
+        "preferences": {
+            "currency": "USD",
+            "timeZone": "PST",
+            "dateFormat": "MM/dd/yyyy"
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------
+Add Account -----
+Request:
+curl -X POST \
+  https://developer.api.yodlee.com/ysl/accounts \
+  -H 'api-version: 1.1' \
+  -H 'authorization: cobSession=08062013_1:baab48aa5f29f8e3c14efe402c24be333d059086a97ca8b6aaafd9e5ca1fb0b56575d1ec5bba291540e911fe9571ebfa6637d70398d93601d55f2af5c8385462,userSession=08062013_0:7ebc39f715ea4362ef7a1cb46dc99c90f212deac5940a302a0a50d883ee1088837aa61b2ce27bc707124df6231335ae62528f76db5c968c9540d75ff89e9bf41' \
+  -H 'cache-control: no-cache' \
+  -H 'cobrand-name: restserver' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 5f7881b2-8035-10d5-a7a3-80254b4ff7df' \
+  -d '{
+"account": {
+         "accountType": "BROKERAGE_CASH",
+         "accountName": "SBI Account",
+         "nickname": "Flood Cash",
+         "accountNumber": "1233",
+         "balance":{
+            "amount": 84699,
+            "currency": "USD"
+           },
+         "includeInNetWorth": "TRUE",
+         "memo": "This is an deveki test account"
+      }
+}'
+Response:
+--------------
+{
+    "account": [
+        {
+            "accountName": "SBI Account",
+            "id": 11913251,
+            "accountNumber": "xxxx1233"
+        }
+    ]
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+Get Account:
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
